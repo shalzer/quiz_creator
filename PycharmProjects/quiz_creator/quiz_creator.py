@@ -39,3 +39,5 @@ while True:
         file.write("\n-----------------\n")
     again = input("\nDo you want to add another question? (yes/no): ")
     if again.lower() != "yes":
+        print("Quiz saved!")
+        break
