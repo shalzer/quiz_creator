@@ -16,3 +16,5 @@
 #if they answer "yes", tell the user that the quiz is saved
 #else, break the loop
 #exit loop
+
+filename = "quiz_data.txt"
