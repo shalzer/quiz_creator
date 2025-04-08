@@ -23,3 +23,7 @@ while True:
     print("\n Welcome to Quiz Creator !")
 
     question = input("Question: ")
+    choice_a = input("A.) ")
+    choice_b = input("B.) ")
+    choice_c = input("C.) ")
+    choice_d = input("D.) ")
