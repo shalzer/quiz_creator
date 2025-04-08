@@ -20,3 +20,4 @@
 filename = "quiz_data.txt"
 
 while True:
+    print("\n Welcome to Quiz Creator !")
