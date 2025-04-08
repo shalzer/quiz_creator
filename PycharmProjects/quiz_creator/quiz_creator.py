@@ -36,3 +36,4 @@ while True:
         file.write(f"C.) {choice_c}\n")
         file.write(f"D.) {choice_d}\n")
         file.write(f"Answer: {answer} \n")
+        file.write("\n-----------------\n")
