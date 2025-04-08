@@ -38,3 +38,4 @@ while True:
         file.write(f"Answer: {answer} \n")
         file.write("\n-----------------\n")
     again = input("\nDo you want to add another question? (yes/no): ")
+    if again.lower() != "yes":
