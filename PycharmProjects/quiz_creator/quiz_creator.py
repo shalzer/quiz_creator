@@ -37,3 +37,4 @@ while True:
         file.write(f"D.) {choice_d}\n")
         file.write(f"Answer: {answer} \n")
         file.write("\n-----------------\n")
+    again = input("\nDo you want to add another question? (yes/no): ")
