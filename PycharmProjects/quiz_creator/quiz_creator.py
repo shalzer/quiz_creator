@@ -28,3 +28,5 @@ while True:
     choice_c = input("C.) ")
     choice_d = input("D.) ")
     correct_answer = input("Correct answer: (A/B/C/D): ").upper()
+
+    with open(filename, "a") as file:
