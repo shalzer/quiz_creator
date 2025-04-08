@@ -18,3 +18,5 @@
 #exit loop
 
 filename = "quiz_data.txt"
+
+while True:
