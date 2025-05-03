@@ -89,3 +89,10 @@ class QuizApp:
         self.next()
 
     def next(self):
+        if not self.qdata:
+            # If we’ve already gone through all the questions:
+            self.q_label.config(text="🎉 Quiz Complete!")
+            self.result.config(text=f"Final Score: {self.score} / {self.total}")
+            self.next_btn.config(state="disabled")
+            for b in self.buttons.values(): b.config(state="disabled")
+            return
