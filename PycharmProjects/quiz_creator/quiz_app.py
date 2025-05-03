@@ -116,3 +116,5 @@ class QuizApp:
             # If it’s wrong, show the correct answer and a “wrong” message
             right = self.curr["choices"][self.curr["answer"]]
             self.result.config(text=f"❌ Mali! Ito tama oh: {self.curr['answer']}) {right}", fg="#f43f5e")
+
+        for b in self.buttons.values(): b.config(state="disabled")
