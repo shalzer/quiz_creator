@@ -125,3 +125,7 @@ if __name__ == "__main__":
     quiz = load_questions("quiz_data.txt")
     if not quiz:
         print("No questions found.")
+    else:
+        root = tk.Tk()
+        QuizApp(root, quiz)
+        root.mainloop()
