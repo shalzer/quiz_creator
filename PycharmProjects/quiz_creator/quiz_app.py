@@ -86,3 +86,4 @@ class QuizApp:
                                   bg="#3b82f6", fg="white", activebackground="#2563eb",
                                   state="disabled", command=self.next)
         self.next_btn.pack(pady=10)
+        self.next()
