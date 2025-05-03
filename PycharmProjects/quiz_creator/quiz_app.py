@@ -119,3 +119,4 @@ class QuizApp:
 
         for b in self.buttons.values(): b.config(state="disabled")
         self.score_label.config(text=f"Score: {self.score} / {self.total}")
+        self.next_btn.config(state="normal")
