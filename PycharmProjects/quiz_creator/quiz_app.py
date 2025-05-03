@@ -60,3 +60,7 @@ class QuizApp:
         self.master, self.qdata = master, qdata.copy()
         self.score, self.total = 0, len(qdata)
         self.style = {"font": ("Roboto", 12, "bold"), "bg": "#0f172a", "fg": "white"}
+
+        master.title("🎮 QUIZ APP ")
+        master.geometry("600x550")
+        master.configure(bg="#0f172a")
