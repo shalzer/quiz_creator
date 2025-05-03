@@ -52,3 +52,5 @@ def load_questions(file):
             questions.append({"question": q, "choices": dict(zip("ABCD", [a, b, c, d])), "answer": ans})
         except:
             continue
+
+    return questions
