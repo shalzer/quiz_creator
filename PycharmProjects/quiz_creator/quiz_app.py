@@ -49,4 +49,4 @@ def load_questions(file):
             a, b, c, d = (l.split(") ")[1] for l in lines[1:5])
             ans = lines[5].split("Answer: ")[1].strip()
 
-        questions.append({"question": q, "choices": dict(zip("ABCD", [a, b, c, d])), "answer": ans})
+            questions.append({"question": q, "choices": dict(zip("ABCD", [a, b, c, d])), "answer": ans})
