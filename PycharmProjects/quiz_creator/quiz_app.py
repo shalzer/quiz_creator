@@ -35,19 +35,23 @@
 import tkinter as tk
 import random
 
-def load_questions(file):
-    with open(file, "r") as f:
-        blocks = f.read().strip().split("\n-----------------\n")
+from quiz_creator import correct_answer
+
+
+def load_questions(file_path):
+    with open(file_path, "r") as file:
+        blocks = file.read().strip().split("\n-----------------\n")
 
     questions = []
     for block in blocks:
         lines = block.strip().split("\n")
-        if len(lines) < 6: continue
+        if len(lines) < 6:
+            continue
 
         try:
-            q = lines[0].split("Question: ")[1]
-            a, b, c, d = (l.split(") ")[1] for l in lines[1:5])
-            ans = lines[5].split("Answer: ")[1].strip()
+            question_text = lines[0].split("Question: ")[1]
+            choice_a, choice_b, choice_c, choice_d = (line.split(") ")[1] for line in lines[1:5])
+            correct_answer = lines[5].split("Answer: ")[1].strip()
 
             questions.append({"question": q, "choices": dict(zip("ABCD", [a, b, c, d])), "answer": ans})
         except:
