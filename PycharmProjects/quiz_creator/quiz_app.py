@@ -68,3 +68,6 @@ class QuizApp:
         tk.Label(master, text="⚔️ Test Your Skills!", font=("Roboto", 20, "bold"), bg="#0f172a", fg="#facc15", pady=10).pack()
         self.score_label = tk.Label(master, **self.style)
         self.score_label.pack()
+
+        self.q_label = tk.Label(master, font=("Roboto", 14, "bold"), fg="#e0e0e0", bg="#0f172a", wraplength=550, pady=20)
+        self.q_label.pack()
