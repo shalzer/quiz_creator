@@ -43,3 +43,8 @@ def load_questions(file):
     for block in blocks:
         lines = block.strip().split("\n")
         if len(lines) < 6: continue
+
+        try:
+            q = lines[0].split("Question: ")[1]
+            a, b, c, d = (l.split(") ")[1] for l in lines[1:5])
+            ans = lines[5].split("Answer: ")[1].strip()
