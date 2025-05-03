@@ -107,3 +107,5 @@ class QuizApp:
 
         self.next_btn.config(state="disabled")
         self.score_label.config(text=f"Score: {self.score} / {self.total}")
+
+    def check(self, pick):
