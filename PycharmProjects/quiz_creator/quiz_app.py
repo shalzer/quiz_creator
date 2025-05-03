@@ -78,3 +78,6 @@ class QuizApp:
                          command=lambda k=k: self.check(k)) for k in "ABCD"
         }
         for btn in self.buttons.values(): btn.pack(pady=6)
+
+        self.result = tk.Label(master, font=("Roboto", 14, "bold"), bg="#0f172a", fg="white")
+        self.result.pack(pady=20)
