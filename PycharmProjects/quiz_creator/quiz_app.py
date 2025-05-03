@@ -112,3 +112,7 @@ class QuizApp:
         if pick == self.curr["answer"]:
             self.score += 1
             self.result.config(text="✅ TAMA! Galing ah", fg="#10b981")
+        else:
+            # If it’s wrong, show the correct answer and a “wrong” message
+            right = self.curr["choices"][self.curr["answer"]]
+            self.result.config(text=f"❌ Mali! Ito tama oh: {self.curr['answer']}) {right}", fg="#f43f5e")
