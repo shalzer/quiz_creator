@@ -36,3 +36,5 @@ import tkinter as tk
 import random
 
 def load_questions(file):
+    with open(file, "r") as f:
+        blocks = f.read().strip().split("\n-----------------\n")
