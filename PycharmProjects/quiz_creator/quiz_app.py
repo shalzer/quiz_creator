@@ -40,3 +40,5 @@ def load_questions(file):
         blocks = f.read().strip().split("\n-----------------\n")
 
     question = []
+    for block in blocks:
+        lines = block.strip().split("\n")
