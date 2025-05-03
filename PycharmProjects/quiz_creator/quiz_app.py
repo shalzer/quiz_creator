@@ -56,3 +56,7 @@ def load_questions(file):
     return questions
 
 class QuizApp:
+    def __init__(self, master, qdata):
+        self.master, self.qdata = master, qdata.copy()
+        self.score, self.total = 0, len(qdata)
+        self.style = {"font": ("Roboto", 12, "bold"), "bg": "#0f172a", "fg": "white"}
