@@ -35,8 +35,6 @@
 import tkinter as tk
 import random
 
-from quiz_creator import correct_answer
-
 
 def load_questions(file_path):
     with open(file_path, "r") as file:
@@ -50,19 +48,25 @@ def load_questions(file_path):
 
         try:
             question_text = lines[0].split("Question: ")[1]
-            choice_a, choice_b, choice_c, choice_d = (line.split(") ")[1] for line in lines[1:5])
+            choices = (line.split(") ")[1] for line in lines[1:5])
             correct_answer = lines[5].split("Answer: ")[1].strip()
 
-            questions.append({"question": q, "choices": dict(zip("ABCD", [a, b, c, d])), "answer": ans})
+            questions.append({
+                "question": question_text,
+                "choices": dict(zip("ABCD", choices)),
+                "answer": correct_answer
+            })
         except:
             continue
 
     return questions
 
 class QuizApp:
-    def __init__(self, master, qdata):
-        self.master, self.qdata = master, qdata.copy()
-        self.score, self.total = 0, len(qdata)
+    def __init__(self, master, question_data):
+        self.master = master
+        self.question_data = question_data.copy()
+        self.score = 0
+        self.total_questions = len(question_data)
         self.style = {"font": ("Roboto", 12, "bold"), "bg": "#0f172a", "fg": "white"}
 
         master.title("🎮 QUIZ APP ")
@@ -73,57 +77,57 @@ class QuizApp:
         self.score_label = tk.Label(master, **self.style)
         self.score_label.pack()
 
-        self.q_label = tk.Label(master, font=("Roboto", 14, "bold"), fg="#e0e0e0", bg="#0f172a", wraplength=550, pady=20)
-        self.q_label.pack()
+        self.question_label = tk.Label(master, font=("Roboto", 14, "bold"), fg="#e0e0e0", bg="#0f172a", wraplength=550, pady=20)
+        self.question_label.pack()
 
-        self.buttons = {
-            k: tk.Button(master, width=50, bg="#1e293b", fg="white", activebackground="#f43f5e",
+        self.answer_buttons = {
+            option: tk.Button(master, width=50, bg="#1e293b", fg="white", activebackground="#f43f5e",
                          activeforeground="white", relief="groove", borderwidth=3, font=self.style["font"],
-                         command=lambda k=k: self.check(k)) for k in "ABCD"
+                         command=lambda option=option: self.check(option)) for option in "ABCD"
         }
-        for btn in self.buttons.values(): btn.pack(pady=6)
+        for button in self.answer_buttons.values(): button.pack(pady=6)
 
-        self.result = tk.Label(master, font=("Roboto", 14, "bold"), bg="#0f172a", fg="white")
-        self.result.pack(pady=20)
+        self.result_label = tk.Label(master, font=("Roboto", 14, "bold"), bg="#0f172a", fg="white")
+        self.result_label.pack(pady=20)
 
-        self.next_btn = tk.Button(master, text="➡️ Next Question", font=self.style["font"],
+        self.next_button = tk.Button(master, text="➡️ Next Question", font=self.style["font"],
                                   bg="#3b82f6", fg="white", activebackground="#2563eb",
                                   state="disabled", command=self.next)
-        self.next_btn.pack(pady=10)
+        self.next_button.pack(pady=10)
         self.next()
 
     def next(self):
-        if not self.qdata:
+        if not self.question_data:
             # If we’ve already gone through all the questions:
-            self.q_label.config(text="🎉 Quiz Complete!")
-            self.result.config(text=f"Final Score: {self.score} / {self.total}")
-            self.next_btn.config(state="disabled")
-            for b in self.buttons.values(): b.config(state="disabled")
+            self.question_label.config(text="🎉 Quiz Complete!")
+            self.result_label.config(text=f"Final Score: {self.score} / {self.total_questions}")
+            self.next_button.config(state="disabled")
+            for button in self.answer_buttons.values(): button.config(state="disabled")
             return
 
-        self.curr = random.choice(self.qdata)
-        self.qdata.remove(self.curr)
-        self.q_label.config(text=self.curr["question"])
+        self.current_question = random.choice(self.question_data)
+        self.question_data.remove(self.current_question)
+        self.question_label.config(text=self.current_question["question"])
 
-        for k, v in self.curr["choices"].items():
-            self.buttons[k].config(text=f"{k}) {v}", state="normal")
-        self.result.config(text="")
+        for option_key, option_value in self.current_question["choices"].items():
+            self.answer_buttons[option_key].config(text=f"{option_key}) {option_value}", state="normal")
+        self.result_label.config(text="")
 
-        self.next_btn.config(state="disabled")
-        self.score_label.config(text=f"Score: {self.score} / {self.total}")
+        self.next_button.config(state="disabled")
+        self.score_label.config(text=f"Score: {self.score} / {self.total_questions}")
 
     def check(self, pick):
-        if pick == self.curr["answer"]:
+        if pick == self.current_question["answer"]:
             self.score += 1
-            self.result.config(text="✅ TAMA! Galing ah", fg="#10b981")
+            self.result_label.config(text="✅ TAMA! Galing ah", fg="#10b981")
         else:
             # If it’s wrong, show the correct answer and a “wrong” message
-            right = self.curr["choices"][self.curr["answer"]]
-            self.result.config(text=f"❌ Mali! Ito tama oh: {self.curr['answer']}) {right}", fg="#f43f5e")
+            right = self.current_question["choices"][self.current_question["answer"]]
+            self.result_label.config(text=f"❌ Mali! Ito tama oh: {self.current_question['answer']}) {right}", fg="#f43f5e")
 
-        for b in self.buttons.values(): b.config(state="disabled")
-        self.score_label.config(text=f"Score: {self.score} / {self.total}")
-        self.next_btn.config(state="normal")
+        for button in self.answer_buttons.values(): button.config(state="disabled")
+        self.score_label.config(text=f"Score: {self.score} / {self.total_questions}")
+        self.next_button.config(state="normal")
 
 if __name__ == "__main__":
     quiz = load_questions("quiz_data.txt")
