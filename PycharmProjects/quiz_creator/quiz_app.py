@@ -81,3 +81,8 @@ class QuizApp:
 
         self.result = tk.Label(master, font=("Roboto", 14, "bold"), bg="#0f172a", fg="white")
         self.result.pack(pady=20)
+
+        self.next_btn = tk.Button(master, text="➡️ Next Question", font=self.style["font"],
+                                  bg="#3b82f6", fg="white", activebackground="#2563eb",
+                                  state="disabled", command=self.next)
+        self.next_btn.pack(pady=10)
