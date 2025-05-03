@@ -96,7 +96,11 @@ class QuizApp:
             self.next_btn.config(state="disabled")
             for b in self.buttons.values(): b.config(state="disabled")
             return
-        
+
         self.curr = random.choice(self.qdata)
         self.qdata.remove(self.curr)
         self.q_label.config(text=self.curr["question"])
+
+        for k, v in self.curr["choices"].items():
+            self.buttons[k].config(text=f"{k}) {v}", state="normal")
+        self.result.config(text="")
