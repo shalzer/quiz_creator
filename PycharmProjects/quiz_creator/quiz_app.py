@@ -31,3 +31,6 @@
     # Load questions from the text file
     # If no questions are found, print a warning
     # Otherwise, create the quiz window and start the app
+
+import tkinter as tk
+import random
