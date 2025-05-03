@@ -54,3 +54,5 @@ def load_questions(file):
             continue
 
     return questions
+
+class QuizApp:
