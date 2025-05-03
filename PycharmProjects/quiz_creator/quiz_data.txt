@@ -1,0 +1,16 @@
+Question: Ano magiging final grade ni Liwanag sa OOP?
+A.) 1.00
+B.) 1.25
+C.) 1.50
+D.) 1.75
+Answer: A
+
+-----------------
+Question: Who created Facebook?
+A.) Mark Zuckerberg
+B.) Tim Berners Lee
+C.) Elon Musk
+D.) Hannah Liwanag
+Answer: A 
+
+-----------------
