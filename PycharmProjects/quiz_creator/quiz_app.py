@@ -64,3 +64,7 @@ class QuizApp:
         master.title("🎮 QUIZ APP ")
         master.geometry("600x550")
         master.configure(bg="#0f172a")
+
+        tk.Label(master, text="⚔️ Test Your Skills!", font=("Roboto", 20, "bold"), bg="#0f172a", fg="#facc15", pady=10).pack()
+        self.score_label = tk.Label(master, **self.style)
+        self.score_label.pack()
