@@ -118,3 +118,4 @@ class QuizApp:
             self.result.config(text=f"❌ Mali! Ito tama oh: {self.curr['answer']}) {right}", fg="#f43f5e")
 
         for b in self.buttons.values(): b.config(state="disabled")
+        self.score_label.config(text=f"Score: {self.score} / {self.total}")
