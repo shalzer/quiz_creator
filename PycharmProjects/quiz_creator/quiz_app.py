@@ -42,3 +42,4 @@ def load_questions(file):
     question = []
     for block in blocks:
         lines = block.strip().split("\n")
+        if len(lines) < 6: continue
