@@ -50,3 +50,5 @@ def load_questions(file):
             ans = lines[5].split("Answer: ")[1].strip()
 
             questions.append({"question": q, "choices": dict(zip("ABCD", [a, b, c, d])), "answer": ans})
+        except:
+            continue
