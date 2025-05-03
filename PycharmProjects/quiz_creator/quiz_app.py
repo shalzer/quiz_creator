@@ -34,3 +34,5 @@
 
 import tkinter as tk
 import random
+
+def load_questions(file):
