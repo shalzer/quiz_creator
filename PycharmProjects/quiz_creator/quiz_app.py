@@ -109,3 +109,6 @@ class QuizApp:
         self.score_label.config(text=f"Score: {self.score} / {self.total}")
 
     def check(self, pick):
+        if pick == self.curr["answer"]:
+            self.score += 1
+            self.result.config(text="✅ TAMA! Galing ah", fg="#10b981")
