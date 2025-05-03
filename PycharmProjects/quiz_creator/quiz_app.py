@@ -120,3 +120,6 @@ class QuizApp:
         for b in self.buttons.values(): b.config(state="disabled")
         self.score_label.config(text=f"Score: {self.score} / {self.total}")
         self.next_btn.config(state="normal")
+
+if __name__ == "__main__":
+    quiz = load_questions("quiz_data.txt")
